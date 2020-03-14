@@ -5,12 +5,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserStorageJDBC {
+public class UserStoragePrimaryJDBC {
 
     private final StorageJDBC storage;
 
     @Autowired
-    public UserStorageJDBC(@Qualifier("standard") final StorageJDBC storage) {
+    public UserStoragePrimaryJDBC(final StorageJDBC storage) {
         this.storage = storage;
     }
 
