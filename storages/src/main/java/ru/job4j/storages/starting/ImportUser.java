@@ -16,6 +16,7 @@ public class ImportUser {
 
     public void start() {
         User user = new User("Alex", "Balduin");
+        System.setProperty("spring.profiles.active", "memory");
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         UserStorage storage = context.getBean(UserStorage.class);
         storage.add(user);

@@ -4,8 +4,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.job4j.storages.models.User;
-import ru.job4j.storages.persistent.MemoryStorage;
-import ru.job4j.storages.persistent.Storage;
 import ru.job4j.storages.persistent.UserStorage;
 
 import java.util.List;
@@ -14,11 +12,13 @@ import static org.junit.Assert.*;
 
 public class MemoryStorageTest {
 
+
     /**
      * the test for add and findById methods.
      */
     @Test
     public void whenAddThenFound() {
+        System.setProperty("spring.profiles.active", "jdbc");
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         UserStorage storage = context.getBean(UserStorage.class);
         User user = new User("Miguel", "Sanders");
@@ -34,6 +34,7 @@ public class MemoryStorageTest {
      */
     @Test
     public void whenAddedTwoThenListWithThem() {
+        System.setProperty("spring.profiles.active", "jdbc");
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         UserStorage storage = context.getBean(UserStorage.class);
         User user1 = new User("Miguel", "Sanders");
@@ -49,6 +50,7 @@ public class MemoryStorageTest {
      */
     @Test
     public void whenAddedTwoAndOneDeletedThenListWithOnlyOne() {
+        System.setProperty("spring.profiles.active", "jdbc");
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
         UserStorage storage = context.getBean(UserStorage.class);
         User user1 = new User("Miguel", "Sanders");
